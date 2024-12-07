@@ -6,7 +6,7 @@ let monthPurchaseTotal = 0;  // Variable to store monthly total expense
 // Function to fetch purchase data from the server
 async function fetchPurchaseData() {
     try {
-        const response = await fetch('http://192.168.29.191:8000/parties/api/purchases');  // Adjust URL as needed
+        const response = await fetch('https://kumar-gruh-udhyog-test-1.onrender.com/parties/api/purchases');  // Adjust URL as needed
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -112,7 +112,7 @@ fetchPurchaseData();
 // Function to fetch sales data from the server
 async function fetchSalesData() {
     try {
-        const response = await fetch('http://192.168.29.191:8000/invoice/api/inoice');  // Adjust URL as needed
+        const response = await fetch('https://kumar-gruh-udhyog-test-1.onrender.com/invoice/api/inoice');  // Adjust URL as needed
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -205,7 +205,7 @@ let paymentData = [];  // Array to store fetched sales data
 // Function to fetch sales data from the server
 async function fetchpaymentData() {
     try {
-        const response = await fetch('http://192.168.29.191:8000/parties/api/payment');  // Adjust URL as needed
+        const response = await fetch('https://kumar-gruh-udhyog-test-1.onrender.com/parties/api/payment');  // Adjust URL as needed
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
