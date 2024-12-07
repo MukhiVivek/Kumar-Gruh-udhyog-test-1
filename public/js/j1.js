@@ -19,7 +19,7 @@ let itemsData = [];
 
 async function fetchItemsData() {
   try {
-    const response = await fetch('http://192.168.29.191:8000/item/api/items'); // Adjust URL if hosted elsewhere
+    const response = await fetch('https://kumar-gruh-udhyog-test-1.onrender.com/item/api/items'); // Adjust URL if hosted elsewhere
     itemsData = await response.json(); // Update the itemsData array with the fetched data
   } catch (error) {
     console.error('Error fetching items data:', error);
