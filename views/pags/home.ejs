@@ -1,0 +1,147 @@
+<% layout('/layout/boilerplate.ejs') -%>
+
+    <body>
+        <div class="container backk">
+            <div class="mb-4">
+
+                <div>
+                    <h3>Hello, Vivek</h3>
+                    <p>Kumar Gruh Udhyog </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-4">
+
+                <div class="col-md pricess">
+                    <h4> ₹ <span id="todaySales">0</span></h4>
+                    <h5>Today Sales</h5>
+                </div>
+                <div class="col-md pricess">
+                    <h4> ₹ 0 </h4>
+                    <h5>To Collect</h5>
+                </div>
+                <div class="col-md pricess">
+                    <h4> ₹ <span id="today_purchase">0</span> </h4>
+                    <h5>Today Purchase</h5>
+                </div>
+                <div class="col-md  red-pricess">
+                    <h4> ₹ <span id="todayPaymnets">0</span></h4>
+                    <h5>Today Payment</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card home-table col-md">
+                    <div class="card-header">
+                        Today sales :
+                    </div>
+                    <div class="card-body scrollable-table">
+                        <table class="table table1  table-bordered">
+                            <thead>
+                                <th class="table-light">Invoice No.</th>
+                                <th class="table-light">Customer Name</th>
+                                <th class="table-light">Amount </th>
+
+                            </thead>
+                            <tbody>
+                                <%for(let datas of today_sales){%>
+                                    <tr>
+                                <td class="text-center"><%= datas.invoice_number %></td>
+                                <td><%= datas.customers.customer_name %></td>
+                                <td><%= new Intl.NumberFormat('en-IN').format(datas.subtotal) %> /-</td> 
+                            </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div >
+                        <a href=""><div class="card-footer text-body-secondary text-center">Show more</div></a> 
+                    </div>
+                </div>
+                <div class="card home-table col">
+                    <div class="card-header">
+                        Today purchase :
+                    </div>
+                    <div class="card-body scrollable-table">
+                        <table class="table table1 table-bordered">
+                            <thead>
+                                <th class="table-light">Purchase No.</th>
+                                <th class="table-light">Party Name</th>
+                                <th class="table-light">Item Name </th>
+                                <th class="table-light">Item Qty </th>
+
+                            </thead>
+                            <tbody>
+                                <%for(let datas of purchase_data){%>
+                                <tr>
+                                <td class="text-center"><%= datas.Purchase_number %></td>
+                                <td><%= datas.party_name %></td>
+                                <td><%= datas.item %></td>
+                                <td><%= datas.box * datas.box_weight %>kg</td>
+                                </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href=""><div class="card-footer text-body-secondary text-center">Show more</div></a>                    
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card home-table col">
+                <div class="card-header">
+                    <h5>Sales, Purchase, and Payment </h5>
+                </div>
+                <div class="card-body ">
+                    <table class="table">
+                        <thead>
+                            <th class="table-light"></th>
+                            <th class="table-light">Sales</th>
+                            <th class="table-light">Purchase</th>
+                            <th class="table-light">Payment</th>
+
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                            <td class="text-center table12" >Today</td>
+                            <td>₹ <span id="todaySales1">0</span></td>
+                            <td>₹ <span id="today_purchase1">0</span></td>
+                            <td>₹ <span id="todayPaymnets1">0</span></td>
+                            </tr>
+                            <tr>
+                            <td class="text-center table12">This Week</td>
+                            <td>₹ <span id="lastWeekSales">0</span></td>
+                            <td>₹<span id="week_purchase">0</span></td>
+                            <td>₹ <span id="lastWeekPayments">0</span></td>
+                            </tr>
+                            <tr>
+                            <td class="text-center table12">This Month</td>
+                            <td>₹ <span id="monthSales">0</span></td>
+                            <td>₹ <span id="month_purchase">0</span></td>
+                            <td>₹ <span id="fullMonthPayments">0</span></td>
+                            </tr>
+                            <tr>
+                            <td class="text-center table12">This Year</td>
+                            <td>₹ <span id="monthSales1">0</span></td>
+                            <td>₹ <span id="month_purchase1">0</span></td>
+                            <td>₹ <span id="fullMonthPayments1">0</span></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+            
+        </div>
+    </div>
+
+    <div class="lol">
+        <div id="lastWeekPayments1"></div>
+
+₹ <span id="lastWeekSales1"></span>
+
+<span id="week_purchase1"></span>
+
+    </div>
+    
+        </div>
+        <script src="/js/home.js"></script>
+    </body>

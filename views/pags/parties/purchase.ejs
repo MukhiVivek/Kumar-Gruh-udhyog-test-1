@@ -1,0 +1,91 @@
+<% layout('/layout/boilerplate.ejs') -%>
+    <div class="row">
+        <div class="col-8 offset-2">
+
+            <body>
+                <h3>Create Purchase</h3>
+                <form action="/parties/purchase" method="post" novalidate class="needs-validation">
+                    <br>
+                    <!-- <div class=" mb-3">
+                    <label for="Party Name" class="from-label">Party Name</label>
+                    <input type="text" name="data[party_name]" placeholder="Enter Party Name" class="form-control"
+                        required>
+        </div> -->
+                    <select class="form-select mb-3" name="data[party_name]" aria-label="Default select example">
+                        <option selected>Select Party Name </option>
+                        <%for(let datas of data){%>
+                            <option value="<%= datas.party_name%>">
+                                <%= datas.party_name%>
+                            </option>
+                            <%}%>
+                    </select>
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md -8">
+                            <label for="Item" class="from-label">Item</label>
+                            <input type="text" name="data[item]" placeholder="Enter Item" class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="Purchase_number" class="from-label">Purchase Number</label>
+                            <input type="number" name="data[Purchase_number]" value="<%= Purchase_no + 1%>"
+                                class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-4">
+                            <label for="box" class="form-label">Box</label>
+                            <input type="number" id="box" name="data[box]" placeholder="Enter Box" class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="box-weight" class="form-label">Box-Weight</label>
+                            <input type="number" id="boxWeight" name="data[box_weight]" placeholder="Enter Box Weight" class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="rate" class="form-label">Rate</label>
+                            <input type="number" id="rate" name="data[rate]" placeholder="Enter Rate" step="0.01" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Item" class="from-label">Date </label>
+                        <input type="date" name="data[date]" value="<%= formattedDate%>" class="form-control" required>
+                    </div>
+
+                    <div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="data[check]" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">payment is Done </label>
+                        </div>
+                        <div class="container border  d-none" id="paymentContainer">
+                        <div class="row">
+                            <div class=" col-md-9">
+                                <label for="amount" class="from-label">Amount</label>
+                                <input type="number" id="amount" name="data[amount]" placeholder="Enter amount" class="form-control"
+                                readonly>
+                            </div>
+                            <div class=" col-md-3">
+                                <label for="amount" class="from-label">Payment Number</label>
+                                <input type="number" step="0.001" name="data[payment_number]" value="<%=payment_no%>"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="Payment" class="from-label">Select Payment method:</label>
+                            <select class="form-select mb-3" name="data[payment_method]"
+                                aria-label="Default select example">
+                                <option value="cash">Cash</option>
+                                <option value="bank">bank</option>
+                                <option value="check">Check</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <br>
+                    <button class="btn btn-primary">submit</button><br>
+                </form>
+                <br>
+
+                <script src="../js/parties-detail.js"></script>
+            </body>
+        </div>
+    </div>

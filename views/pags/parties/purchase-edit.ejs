@@ -1,0 +1,56 @@
+<% layout('/layout/boilerplate.ejs') -%>
+    <div class="row">
+        <div class="col-8 offset-2">
+
+            <body>
+                <h3>Create Purchase</h3>
+                <form action="/parties/purchase/edit/<%= data._id%>" method="post" novalidate class="needs-validation">
+                    <br>
+                    <select class="form-select mb-3" name="data[party_name]" aria-label="Default select example">
+                        <option selected>
+                            <%=data.party_name%>
+                        </option>
+
+                    </select>
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md -8">
+                            <label for="Item" class="from-label">Item</label>
+                            <input type="text" name="data[item]" value="<%= data.item %>" class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="Purchase_number" class="from-label">Purchase Number</label>
+                            <input type="number" name="data[Purchase_number]" value="<%= data.Purchase_number %>"
+                                class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-4">
+                            <label for="box" class="from-label">Box</label>
+
+                            <input type="number" name="data[box]" value="<%= data.box %>" step="0.001"
+                                class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="box-Weight" class="from-label">Box-Weight</label>
+                            <input type="number" name="data[box_weight]" value="<%= data.box_weight %>" step="0.001"
+                                class="form-control" required>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="Rate" class="from-label">Rate</label>
+                            <input type="number" name="data[rate]" value="<%= data.rate %>" step="0.001"
+                                class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Item" class="from-label">Date </label>
+                        <input type="date" name="data[date]"
+                            value="<%=  new Date(data.date).toISOString().substring(0, 10 )%>" class="form-control"
+                            required>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">submit</button><br>
+                </form>
+                <br>
+            </body>
+        </div>
+    </div>
