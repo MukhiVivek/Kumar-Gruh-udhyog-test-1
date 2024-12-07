@@ -25,7 +25,7 @@ let customerData = [];
 
 async function fetchcustomerData() {
   try {
-    const response = await fetch('http://192.168.29.191:8000/customer/api/customers'); // Adjust URL if hosted elsewhere
+    const response = await fetch('https://kumar-gruh-udhyog-test-1.onrender.com/customer/api/customers'); // Adjust URL if hosted elsewhere
     customerData = await response.json(); // Update the customerData array with the fetched data
 
 
