@@ -52,12 +52,14 @@ function calculateTodayExpense(purchaseData) {
 
 // Function to calculate weekly total expense (Monday to Sunday)
 function calculateWeekExpense(purchaseData) {
-    const now = new Date();
-    const dayOfWeek = now.getDay();  // Get the current day of the week (0 = Sunday, 6 = Saturday)
-    const lastMonday = new Date(now);
-    lastMonday.setDate(now.getDate() - dayOfWeek + 1);  // Set to the previous Monday
-    const thisSunday = new Date(lastMonday);
-    thisSunday.setDate(lastMonday.getDate() + 6);  // Set to the upcoming Sunday
+    const today = new Date();
+    const lastMonday = new Date(today);
+    lastMonday.setDate(today.getDate() - today.getDay() - 6);  // Last week's Monday
+    lastMonday.setHours(0, 0, 0, 0);  // Set to the start of the day
+
+    const lastSunday = new Date(today);
+    lastSunday.setDate(lastMonday.getDate() + 6);  // Last week's Sunday
+    lastSunday.setHours(23, 59, 59, 999);  // Set to the end of the day
 
     weekPurchaseTotal = 0;  // Reset total before calculation
 
@@ -65,7 +67,7 @@ function calculateWeekExpense(purchaseData) {
         if (!purchase.date) return;  // Skip items without a date
 
         const purchaseDate = new Date(purchase.date);
-        if (purchaseDate >= lastMonday && purchaseDate <= thisSunday) {
+        if (purchaseDate >= lastMonday && purchaseDate <= lastSunday) {
             const { box, box_weight, rate } = purchase;
             weekPurchaseTotal += box * box_weight * rate;  // Calculate total for each item
         }
